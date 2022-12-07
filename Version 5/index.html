@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+    
+    <!----===== CSS ===== -->
+    <link rel="stylesheet" href="style.css">
+
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Sail Vision</title>
+  </head>
+  <body>
+      <div class="sidebar">
+        <div class="logo_content">
+          <div class="logo">
+            <i class='bx bx1-c-plus-plus'></i>
+            <div class="logo_name">SailVision</div>
+          </div>
+          <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <div class="menu-bar">
+          <ul class="dash_list">
+            <li class="divider" data-text="dashboard">.</li>
+            <li>
+              <a href="#">
+                <i class='bx bx-windows'></i>
+                <span class="links_name">Défaut</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class='bx bx-windows'></i>
+                <span class="links_name">GV</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class='bx bx-windows'></i>
+                <span class="links_name">Voile d'avant</span>
+              </a>
+            </li>
+            <li class="divider" data-text="modification">.</li>
+            <li>
+              <a href="#">
+                <i class='bx bx-customize modal-trigger'></i>
+                <span class="links_name">Template</span>
+              </a>
+            </li>
+          </ul>
+          <div class="bottom_content">
+              <li>
+                <a href="#">
+                  <i class='bx bxs-bell'></i>
+                  <span class="links_name">Notifications</span>
+                  <span class="badge">1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class='bx bx-cog modal-trigger-param'></i>
+                  <span class="links_name">Paramétres</span>
+                </a>
+              </li>
+          </div>
+        </div>
+      </div>
+      <div class="home">
+        <div class="template-1" id="temp1">
+          <div class="panel-1">
+            <div class="panel-header">
+              <h1>Headsail</h1>
+              <i class='bx bx-cog modal-trigger-panel'></i>
+            </div>
+            <div class="panel-body">
+              <div class="sec-5 modal-trigger-data" id="hs-sec-5">
+                <h1>--</h1>
+                <h2>DRAFT</h2>
+                <h3>s5</h3>
+              </div>
+              <div class="sec-4 modal-trigger-data" id="hs-sec-4">
+                <h1>--</h1>
+                <h2>SAG</h2>
+                <h3>s4</h3>
+              </div>
+              <div class="sec-3 modal-trigger-data" id="hs-sec-3">
+                <h1>--</h1>
+                <h2>SAG</h2>
+                <h3>s3</h3>
+              </div>
+              <div class="sec-2 modal-trigger-data" id="hs-sec-2">
+                <h1>--</h1>
+                <h2>CAMBER</h2>
+                <h3>s2</h3>
+              </div>
+              <div class="sec-1 modal-trigger-data" id="hs-sec-1">
+                <h1>--</h1>
+                <h2>TWIST</h2>
+                <h3>s1</h3>
+              </div>
+            </div>
+          </div>
+          <div class="panel-2">
+            <div class="panel-header">
+              <h1>Mainsail</h1>
+              <i class='bx bx-cog modal-trigger-panel'></i>
+            </div>
+            <div class="panel-body">
+              <div class="sec-5 modal-trigger-data" id="ms-sec-5">
+                <h1>--</h1>
+                <h2>TWIST</h2>
+                <h3>s5</h3>
+              </div>
+              <div class="sec-4 modal-trigger-data" id="ms-sec-4">
+                <h1>--</h1>
+                <h2>TWIST</h2>
+                <h3>s4</h3>
+              </div>
+              <div class="sec-3 modal-trigger-data" id="ms-sec-3">
+                <h1>--</h1>
+                <h2>CAMBER</h2>
+                <h3>s3</h3>
+              </div>
+              <div class="sec-2 modal-trigger-data" id="ms-sec-2">
+                <h1>--</h1>
+                <h2>TWIST</h2>
+                <h3>s2</h3>
+              </div>
+              <div class="sec-1 modal-trigger-data" id="ms-sec-1">
+                <h1>--</h1>
+                <h2>DRAFT</h2>
+                <h3>s1</h3>
+              </div>
+            </div>
+          </div>
+          <div class="panel-3">
+            <div class="panel-header">
+              <h1>Courbes</h1>
+              <i class='bx bx-cog modal-trigger-panel'></i>
+            </div>
+            <div class="panel-body">
+              <div class="canvas-container">
+                <canvas id="graph1"></canvas>
+                <canvas id="graph2"></canvas>
+                <canvas id="graph3"></canvas>
+                <canvas id="graph4"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="panel-4">
+            <div class="panel-header">
+              <h1>Boat</h1>
+              <i class='bx bx-cog modal-trigger-panel'></i>
+            </div>
+            <div class="panel-body">
+              <div class="box-6 modal-trigger-data" id="ms-sec-5">
+                <h1>--</h1>
+                <h2>TWA</h2>
+              </div>
+              <div class="box-5 modal-trigger-data" id="ms-sec-4">
+                <h1>--</h1>
+                <h2>TWS</h2>
+              </div>
+              <div class="box-4 modal-trigger-data" id="ms-sec-3">
+                <h1>--</h1>
+                <h2>COG</h2>
+              </div>
+              <div class="box-3 modal-trigger-data" id="ms-sec-2">
+                <h1>--</h1>
+                <h2>SOG</h2>
+              </div>
+              <div class="box-2 modal-trigger-data" id="ms-sec-1">
+                <h1>--</h1>
+                <h2>%POL</h2>
+              </div>
+              <div class="box-1 modal-trigger-data" id="ms-sec-1">
+                <h1>--</h1>
+                <h2>TWD</h2>
+              </div>
+            </div>
+          </div>
+          <div class="panel-5">
+            <div class="panel-header">
+              <h1>Profil des sections</h1>
+              <i class='bx bx-cog modal-trigger-panel'></i>
+            </div>
+            <div class="panel-body">
+              <div class="profil-container">
+                <canvas id="graph5"></canvas>
+              </div>
+              <div class="button-sec">
+                <input type="submit" value="Section 5" class="btn">
+                <input type="submit" value="Section 4" class="btn">
+                <input type="submit" value="Section 3" class="btn">
+                <input type="submit" value="Section 2" class="btn">
+                <input type="submit" value="Section 1" class="btn">
+              </div>
+              <div class="button-sail">
+                <input type="submit" value="Headsail" class="btn">
+                <input type="submit" value="Mainsail" class="btn">
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="template-2 active" id='temp2'>Template n°2</div>
+        <div class="template-3 active" id="temp3">Template n°3</div>
+      </div>
+      <div class="modal-container-param">
+        <div class="overlay">
+          <div class="parameter">
+            <div class="popup-header">
+              <button class="close-modal modal-trigger-param">X</button>
+              <h1>Paramétres de liaisons</h1>
+            </div>
+            <div class="popup-body">
+              <div class="form">
+                <div class="custom_select_c">
+                  <label>Type de centrale</label>
+                  <select name="selectc" class="selectc">
+                    <option value="nmea" selected>NMEA</option>
+                    <option value="nke">NKE</option>
+                    <option value="bravo" >BRAVO</option>
+                  </select>
+                </div>
+                <div class="custom_select_l">
+                  <label>Type de liaisons</label>
+                  <select class="selectl" name="selectl">
+                    <option value="serie" selected>SERIE</option>
+                    <option value="udp">UDP</option>
+                    <option value="tcp" >TCP</option>
+                  </select>
+                </div>
+                <div class="link">
+                  <div class="udp udp-input" id="u">
+                    <div class="input_field">
+                      <label>Numero de port IN</label>
+                      <input type="text" class="input">
+                    </div>
+                  </div>
+                  <div class="serie serie-input" id="s">
+                    <div class="input_field">
+                      <label>Com</label>
+                      <input type="text" class="input">
+                    </div>
+                  </div>
+                  <div class="tcp tcp-input" id="t">
+                    <div class="input_field">
+                      <label>Adresse IP</label>
+                      <input type="text" class="input">
+                    </div>
+                    <div class="input_field">
+                      <label>Numero de port</label>
+                      <input type="text" class="input">
+                    </div>
+                  </div>
+                </div>
+                <div class="input_field">
+                  <input type="submit" value="Connect" class="btn">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-container-temp">
+        <div class="overlay">
+          <div class="template">
+            <div class="popup-header">
+              <button class="close-modal modal-trigger">X</button>
+              <h1>Choix des templates</h1>
+            </div>
+            <div class="popup-body">
+              <ul class="temp-list">
+                <li>
+                  <a href="#">
+                    <img class="template1 temp-1-trigger" src="Template1.png" alt="t1">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="template2 temp-2-trigger" src="Template1.png" alt="t2">
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="template3 temp-3-trigger" src="Template1.png" alt="t1">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div> 
+        </div>
+      </div>
+      <div class="modal-container-pan">
+        <div class="overlay">
+          <div class="panel">
+            <div class="popup-header">
+              <button class="close-modal modal-trigger-panel">X</button>
+              <h1>Choix des widgets</h1>
+            </div>
+            <div class="popup-body">
+              <h1>Contenu du panneau</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-container-data">
+        <div class="overlay">
+          <div class="data">
+            <div class="popup-header">
+              <button class="close-modal modal-trigger-data">X</button>
+              <h1>Choix des données</h1>              
+            </div>
+            <div class="popup-body">
+              <div class="container-box">
+                <label for="entry"><input type="checkbox" id="entry" name="entry">Entry</label>
+                <label for="cfwd"><input type="checkbox" id="cfwd" name="cfwd">Cfwd</label>
+                <label for="camber"><input type="checkbox" id="camber" name="camber">Camber</label>
+                <label for="draft"><input type="checkbox" id="draft" name="draft">Draft</label>
+                <label for="caft"><input type="checkbox" id="caft" name="caft">Caft</label>
+                <label for="exit"><input type="checkbox" id="exit" name="exit">Exit</label>
+                <label for="twist"><input type="checkbox" id="twist" name="twist">Twist</label>
+                <label for="sag lat"><input type="checkbox" id="sag-lat" name="saglat">Sag lat</label>
+                <label for="sag long"><input type="checkbox" id="sag-long" name="saglong">Sag long</label>
+              </div>
+              <div class="input_field">
+                <input type="submit" value="Valider" class="btn">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="script.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+  </body>
+</html>
+
+<script>
+   var ctx = document.getElementById('graph1').getContext('2d')
+   
+   var data ={
+    datasets: [{
+      label: 'Twist',
+      data: [{x:3,y:1},{x:5,y:2},{x:7,y:3},{x:9,y:4},{x:12,y:5}],
+      backgroundColor: '#2196f3',
+      fill: false,
+      borderColor: '#2196f3',
+    }]
+   }
+   var options = {
+    showLines:true,
+    maintainAspectRatio:false,
+    legend: {
+      display:false
+    },
+    title: {
+      display: true,
+      text: 'TWIST'
+    },
+  }
+
+   var config ={
+    type:'scatter',
+    data: data,
+    options: options,
+   }
+   var graph1 = new Chart(ctx,config)
+
+   var ctx = document.getElementById('graph2').getContext('2d')
+   
+   var data ={
+    datasets: [{
+      label: 'Camber',
+      data: [{x:2,y:1},{x:4,y:2},{x:7,y:3},{x:10,y:4},{x:8,y:5}],
+      backgroundColor: '#219645',
+      fill: false,
+      borderColor: '#219645',
+    }]
+   }
+
+   var options = {
+    showLines:true,
+    maintainAspectRatio:false,
+    legend: {
+      display:false
+    },
+    title: {
+      display: true,
+      text: 'CAMBER'
+  }
+  }
+
+   var config ={
+    type:'scatter',
+    data: data,
+    options: options,
+   }
+   var graph2 = new Chart(ctx,config)
+
+   var ctx = document.getElementById('graph3').getContext('2d')
+   
+   var data ={
+    datasets: [{
+      label: 'Sag',
+      data: [{x:3,y:1},{x:4,y:2},{x:7,y:3},{x:9,y:4},{x:10,y:5}],
+      backgroundColor: '#d82020',
+      fill: false,
+      borderColor: '#d82020',
+    }]
+   }
+
+   var options = {
+    showLines:true,
+    maintainAspectRatio:false,
+    legend: {
+      display:false
+    },
+    title: {
+      display: true,
+      text: 'SAG'
+  }
+  }
+
+   var config ={
+    type:'scatter',
+    data: data,
+    options: options,
+   }
+   var graph3 = new Chart(ctx,config)
+  
+   var ctx = document.getElementById('graph4').getContext('2d')
+   
+   var data ={
+    datasets: [{
+      label: 'Draft',
+      data: [{x:3,y:1},{x:5,y:2},{x:6.5,y:3},{x:6,y:4},{x:5,y:5}],
+      backgroundColor: '#df9305',
+      fill: false,
+      borderColor: '#df9305',
+    }]
+   }
+
+   var options = {
+    showLines:true,
+    maintainAspectRatio:false,
+    legend: {
+      display:false
+    },
+    title: {
+      display: true,
+      text: 'DRAFT'
+  }
+  }
+
+   var config ={
+    type:'scatter',
+    data: data,
+    options: options,
+   }
+   var graph4 = new Chart(ctx,config)
+
+   var ctx = document.getElementById('graph5').getContext('2d')
+
+   var options = {
+    showLines:true,
+    maintainAspectRatio:false,
+    scales: {
+      xAxes: [{
+              display: true,
+              scaleLabel: {
+                  display: true,
+              },
+              gridLines: {
+                display:false
+            } 
+          }],
+      yAxes: [{
+              display: true,
+              ticks: {
+                  beginAtZero: true,
+                  max: 10,
+                  display:false,
+              },
+              gridLines: {
+                display:false,
+                drawBorder: false
+            } 
+          }]
+    },
+    legend: {
+      display:false
+    }
+  
+  }
+
+   var data ={
+    datasets: [{
+      label: 'Section 4',
+      data: [{x:0,y:0},{x:0.75,y:2},{x:1.75,y:3},{x:3,y:2.5},{x:4,y:1.65},{x:5,y:0.80},{x:6,y:0}],
+      backgroundColor: '#000000',
+      fill: false,
+      borderColor: '#000000',
+    }]
+   }
+
+   var config ={
+    type:'scatter',
+    data: data,
+    options: options,
+   }
+   var graph5 = new Chart(ctx,config)
+
+</script>

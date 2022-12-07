@@ -1,0 +1,1220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+:root{
+    /* ===== Colors ===== */
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #1c1a1a;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /* ===== Transition ===== */
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+body{
+    height: 100vh;
+    background: var(--body-color);
+}
+
+/*--------------------- SIDEBAR ---------------------*/
+/*Paramètres de la sidebar*/
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height:100%;
+    width: 78px;
+    background: var(--primary-color);
+    padding: 6px 14px;
+    transition: all 0.5s ease;
+}
+
+/*Activer l'élargissement de la sidebar*/
+.sidebar.active{
+    width: 240px
+}
+
+/*Paramètre du logo*/
+.sidebar .logo_content .logo{
+    color: #FFF;
+    display: flex;
+    height: 50px;
+    width:100%;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/*Activation de l'affichage du logo*/
+.sidebar.active .logo_content .logo{
+    opacity: 1;
+    pointer-events: none;
+}
+
+/*?*/
+.logo_content .logo i{
+   font-size: 28px;
+   margin-right: 5px;
+}
+
+/*Paramètre texte logo*/
+.logo_content .logo .logo_name{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/*Paramètre du bouton d'activation de la sidebar*/
+.sidebar #btn{
+    position: absolute;
+    color: #FFF;
+    top: 6px;
+    left: 50%;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    transform: translateX(-50%);
+}
+
+/*Activer le déplacement du bouton en mode toggle*/
+.sidebar.active #btn{
+    left:90%;
+}
+
+/**/
+.sidebar .divider{
+    margin-top:0px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #707070;
+    text-align: center;
+}
+
+.sidebar.active .divider{
+    margin-top:0px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #707070;
+    text-align: left;
+}
+
+/*Paramètre de la liste*/
+.sidebar ul{
+    margin-top: 20px;
+}
+
+/*Paramètres pour chaque éléments de la liste*/
+.sidebar li{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin: 0 0px;
+    list-style: none;
+    line-height:50px ;
+}
+
+/*Paramètres des textes de chaque élément*/
+.sidebar li a{
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+/*Activer un fond par dessus lors du passage de la souris*/
+.sidebar li a:hover{
+    color: #11101d;
+    background: #FFF;
+}
+
+/*Paramètres des logos*/
+.sidebar li a i{
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+}
+
+/*Désactiver l'affichage des noms*/
+.sidebar .links_name{
+    opacity: 0;
+    pointer-events: none;
+}
+
+/*Activer l'affichage des noms*/
+.sidebar.active .links_name{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/*Séparation des 2 sous menus*/
+.sidebar .menu-bar{
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*Paramétre logo notification*/
+.sidebar .badge{
+    position: relative;
+    font-size: 10px;
+    top: -10px;
+    left: -116px;
+    display: flex;
+}
+/*Paramètres de la page des templates*/
+.home{
+    position: relative;
+    height: 100vh;
+    left: 78px;
+    width: calc(100% - 78px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+/*Paramètre texte de la page*/
+.home .text{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}
+
+/*Activer le mouvement de la page*/
+.sidebar.active ~ .home{
+    left: 240px;
+    width: calc(100% - 78px);
+}
+
+
+/*--------------------- FENETRE MODAL TEMPLATE ---------------------*/
+/*Paramètres de la fenêtre modal*/
+.modal-container-temp{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #1c1a1a;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/*Activer la fenêtre modale lors de l'appui sur le bouton template*/
+.modal-container-temp.active{
+    display: block;
+}
+
+/*Paramètres de l'overlay lorsque la fenêtre modal est ouverte*/
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #333333d3;
+}
+
+.template{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    min-width: 520px;
+    width: 45%;
+    background: red;
+}
+
+/**/
+.template .popup-header{
+    padding: 2px 16px;
+    background-color: #ffffff;
+    color: #1c1a1a;
+    display: flex;
+}
+
+/*Paramètre du bouton de la fenêtre modal*/
+.template .close-modal{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 10px;
+    padding: 1.5px 20px;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    background: #fff;
+    color: rgb(0, 0, 0);
+}
+
+/*Activation du background lors du passage de la souris*/
+.template .close-modal:hover{
+    color: #FFF;
+    background: rgb(188, 15, 15);
+}
+
+/*Paramètres du texte de la modal*/
+.template .popup-header h1{
+    font-size: 12px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+/*Paramètres du body de la popup*/
+.template .popup-body{
+    padding: 20px 16px;
+    background-color: #e0e0e0;
+}
+
+/*Paramètres d'affichage de la liste d'images*/
+.modal-container-temp .popup-body ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    column-width: 205px;
+}
+
+/*Paramètre des images*/
+.modal-container-temp .popup-body ul li a img{
+    padding: 10px 10px;
+    width: 175px;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+/*Paramètres d'affichage d'un effet d'ombre lors du passage du curseur*/
+.modal-container-temp .popup-body ul li a img:hover {
+    content: "";
+    display: block;
+    box-shadow: 0 0 10px rgba(18,18,18,0.8);
+}
+
+/*--------------------- FENETRE MODAL PARAMETRE ---------------------*/
+.modal-container-param{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #1c1a1a;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/*Activer la fenêtre modale lors de l'appui sur le bouton template*/
+.modal-container-param.active{
+    display: block;
+}
+
+.parameter{
+    position: relative;
+    top: 25%;
+    background-color: rgb(170, 170, 170);
+    margin: 100px auto;
+    padding: 0;
+    width: 300px;
+    max-width: 85%;
+}
+
+.parameter .popup-header{
+    padding: 2px 16px;
+    background-color: #ffffff;
+    color: #1c1a1a;
+    display: flex;
+}
+
+.parameter .popup-header h1{
+    font-size: 12px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+.parameter .close-modal{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 10px;
+    padding: 1.5px 20px;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    background: #fff;
+    color: rgb(0, 0, 0);
+}
+
+.parameter .close-modal:hover{
+    color: #FFF;
+    background: rgb(188, 15, 15);
+}
+
+.parameter .popup-body{
+    padding: 2px 16px;
+}
+
+.form{
+    width: 100%;
+}
+
+.form h1{
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+}
+
+.form .input_field{
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form .input_field label{
+    width: 150px;
+    color: #11101d;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.form .custom_select_c{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #11101d;
+    font-size: 14px;     
+}
+
+.form .custom_select_c select{
+    margin-top: 10px;
+    margin-bottom: 2px;
+    border: 1px solid #d5dbd9;
+    width: 30%;
+    height: 100%;
+    padding: 1px 2px;
+    border-radius: 3px;
+}
+
+.form .custom_select_l{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #11101d;
+    font-size: 14px;     
+}
+
+.form .custom_select_l select{
+    margin-bottom: 2px;
+    border: 1px solid #d5dbd9;
+    width: 30%;
+    height: 100%;
+    padding: 1px 2px;
+    border-radius: 3px;
+}
+
+.form .custom_select_l label{
+    width: 150px;
+    color: #11101d;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.form .custom_select_c label{
+    width: 150px;
+    color: #11101d;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.form .input_field label{
+    width: 150px;
+    color: #11101d;
+    margin-right: 10px;
+    font-size: 15px;
+}   
+
+.form .input_field .input,
+.form .input_field .textarea{
+    width: 30%;
+    outline: none;
+    border: 1px solid #d5dbd9;
+    font-size: 15px;
+    padding:1px 2px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.form .input_field .btn{
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 0;
+    background: #707070;
+    color: #FFF;
+    cursor: pointer;
+    outline: none;
+}
+
+.form .input_field .btn:hover{
+    background: #11101d;
+    color: #FFF;
+}
+
+
+.form .link{
+    margin-top: 10px;
+}
+
+.tcp{
+    display: none;
+}
+
+
+.tcp.active{
+    display:block;
+}
+
+.udp{
+    display: none;
+}
+
+
+.udp.active{
+    display:block;
+}
+
+.serie{
+    display: none;
+}
+
+
+.serie.active{
+    display:block;
+}
+
+/*--------------------- ACTIVATION TEMPLATE ---------------------*/
+/*Paramètre d'affichage de la template 1*/
+.template-1.active{
+    display: none;
+}
+
+/*Paramétre d'affichage de la template 2*/
+.template-2.active{
+    display: none;
+}
+
+/*Paramétre d'affichage de la template 3*/
+.template-3.active{
+    display: none;
+}
+
+/*--------------------- TEMPLATE 1 ---------------------*/
+.template-1{
+    display: block;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* PANNEAU N°1*/
+
+/*Paramètres de la fenêtre modal*/
+.panel-1{
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    padding: 5px;
+}
+
+
+/*Paramétre titre du panneau*/
+.panel-1 .panel-header h1{
+    font-size: 1.5vh;
+    margin-left: 5px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+/*Paramétre panel header*/
+.panel-1 .panel-header{
+    display: flex;
+    height: 3%;
+    border-radius: 5px 5px 0px 0px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.1% 0.1%;
+    background-color: rgb(45, 45, 45);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+/*Paramètres panel body*/
+.panel-1 .panel-body{
+    height: 97%;
+    background-color: #ffffff;
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+/*----- Sections -----*/
+
+.panel-body .sec-5{
+    position: relative;
+    width: 100%;
+    height: 20%;
+    cursor: pointer;
+    border: 1px solid #000000;
+
+}
+
+.panel-body .sec-5:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+.panel-body h1{
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 4vh;
+}
+
+.panel-body h2{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3vh;
+
+}
+
+.panel-body h3{
+    position: absolute;
+    margin-left: 2%;
+    font-size: 1.5vh;
+}
+
+.panel-body .sec-4{
+    position: relative;
+    width: 100%;
+    height: 20%;
+    cursor: pointer;
+    border: 1px solid #000000;
+}
+
+.panel-body .sec-4:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+.panel-body .sec-3{
+    position: relative;
+    width: 100%;
+    height: 20%;
+    cursor: pointer;
+    border: 1px solid #000000;
+}
+
+.panel-body .sec-3:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+.panel-body .sec-2{
+    position: relative;
+    width: 100%;
+    height: 20%;
+    cursor: pointer;
+    border: 1px solid #000000;
+}
+
+.panel-body .sec-2:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+.panel-body .sec-1{
+    position: relative;
+    width: 100%;
+    height: 20%;
+    cursor: pointer;
+    border: 1px solid #000000;
+}
+
+.panel-body .sec-1:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+
+/* PANNEAU N°2 */
+
+/*Paramètres de la fenêtre modal*/
+.panel-2{
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    padding: 5px;
+    top: 0;
+    right: 0;
+}
+
+
+/*Paramétre titre du panneau*/
+.panel-2 .panel-header h1{
+    font-size: 1.5vh;
+    margin-left: 5px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+/*Paramétre panel header*/
+.panel-2 .panel-header{
+    display: flex;
+    height: 3%;
+    border-radius: 5px 5px 0px 0px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.1% 0.1%;
+    background-color: rgb(45, 45, 45);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+/*Paramètres panel body*/
+.panel-2 .panel-body{
+    height: 97%;
+    background-color: #ffffff;
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+
+/* PANNEAU N°3 */
+
+/*Paramètres de la fenêtre modal*/
+.panel-3{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    padding: 5px;
+    top: 0;
+    left: 10%;
+}
+
+
+/*Paramétre titre du panneau*/
+.panel-3 .panel-header h1{
+    font-size: 1.5vh;
+    margin-left: 5px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+/*Paramétre panel header*/
+.panel-3 .panel-header{
+    display: flex;
+    height: 6%;
+    border-radius: 5px 5px 0px 0px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.1% 0.1%;
+    background-color: rgb(45, 45, 45);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+/*Paramètres panel body*/
+.panel-3 .panel-body{
+    position: relative;
+    height: 94%;
+    background-color: #ffffff;
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+.canvas-container{
+    width: 25%;
+    height: 100%;
+    padding: 2%;
+}
+
+#graph1{
+    position: absolute;
+}
+
+#graph2{
+    position: absolute;
+    left: 25%;
+}
+
+#graph3{
+    position: absolute;
+    left: 50%;
+}
+
+#graph4{
+    position: absolute;
+    left: 75%;
+}
+
+/* PANNEAU N°4 */
+
+/*Paramètres de la fenêtre modal*/
+.panel-4{
+    position: absolute;
+    width: 30%;
+    height: 50%;
+    padding: 5px;
+    top: 0;
+    left: 60%;
+}
+
+
+/*Paramétre titre du panneau*/
+.panel-4 .panel-header h1{
+    font-size: 1.5vh;
+    margin-left: 5px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+/*Paramétre panel header*/
+.panel-4 .panel-header{
+    display: flex;
+    height: 6%;
+    border-radius: 5px 5px 0px 0px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.1% 0.1%;
+    background-color: rgb(45, 45, 45);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+/*Paramètres panel body*/
+.panel-4 .panel-body{
+    position: relative;
+    height: 94%;
+    background-color: #ffffff;
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+.panel-body .box-1{
+    position: relative;
+    width: calc(100%/3);
+    height: 50%;
+    cursor: pointer;
+    border: 1px solid #000000;
+
+}
+
+.panel-body .box-1:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+.panel-body .box-2{
+    position: relative;
+    width: calc(100%/3);
+    height: 50%;
+    cursor: pointer;
+    border: 1px solid #000000;
+
+}
+
+.panel-body .box-2:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+.panel-4 .box-3{
+    position: absolute;
+    width: calc(100%/3);
+    height: 50%;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    border: 1px solid #000000;
+
+}
+
+.panel-body .box-3:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+.panel-4 .box-4{
+    position: absolute;
+    width: calc(100%/3);
+    height: 50%;
+    top: 0;
+    right: calc(100%/3);
+    cursor: pointer;
+    border: 1px solid #000000;
+
+}
+
+.panel-body .box-4:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+.panel-4 .box-5{
+    position: absolute;
+    width: calc(100%/3);
+    height: 50%;
+    top: 50%;
+    right: 0;
+    cursor: pointer;
+    border: 1px solid #000000;
+
+}
+
+.panel-body .box-5:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+.panel-4 .box-6{
+    position: absolute;
+    width: calc(100%/3);
+    height: 50%;
+    top: 50%;
+    right: calc(100%/3);
+    cursor: pointer;
+    border: 1px solid #000000;
+
+}
+
+.panel-body .box-6:hover{
+    background-color: #707070;
+    color: #E4E9F7;
+}
+
+/* PANNEAU N°5 */
+
+/*Paramètres de la fenêtre modal*/
+.panel-5{
+    position: absolute;
+    width: 80%;
+    height: 50%;
+    padding: 5px;
+    top: 50%;
+    left: 10%;
+}
+
+
+/*Paramétre titre du panneau*/
+.panel-5 .panel-header h1{
+    font-size: 1.5vh;
+    margin-left: 5px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+/*Paramétre panel header*/
+.panel-5 .panel-header{
+    display: flex;
+    height: 6%;
+    border-radius: 5px 5px 0px 0px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.1% 0.1%;
+    background-color: rgb(45, 45, 45);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+/*Paramètres panel body*/
+.panel-5 .panel-body{
+    position: relative;
+    height: 94%;
+    background-color: #ffffff;
+    box-shadow: 0 0 7px rgba(18,18,18,0.5);
+}
+
+.profil-container{
+    width: 75%;
+    height: 80%;
+}
+
+#graph5{
+    position: absolute;
+    top: 0%;
+    left: 20%
+}
+
+.button-sec{
+    position: absolute;
+    display: grid;
+    top: 0;
+    width: 15%;
+    padding: 2% 0% 2% 0%;
+    height: 100%;
+    background-color: #707070;
+}
+
+.button-sec .btn{
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 0;
+    background: #707070;
+    color: #FFF;
+    cursor: pointer;
+    outline: none;
+}
+
+.button-sec .btn:hover{
+    background: #11101d;
+    color: #FFF;
+}
+
+.button-sail{
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    width: 15%;
+}
+
+.button-sail .btn{
+    border-radius: 3px;
+    padding: 8px 10px;
+    border: 0;
+    font-size: 15px;
+    background: #707070;
+    color: #FFF;
+    cursor: pointer;
+    outline: none;
+}
+
+.button-sail .btn:hover{
+    background: #11101d;
+    color: #FFF;
+}
+
+/*--------------------- FENETRE MODAL PANNEAU ---------------------*/
+
+/*Paramètres de la fenêtre modal*/
+.modal-container-pan{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #1c1a1a;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/*Activer la fenêtre modale lors de l'appui sur le bouton template*/
+.modal-container-pan.active{
+    display: block;
+}
+
+/*Paramétre des panneaux */
+.panel{
+    position: relative;
+    top: 25%;
+    background-color: rgb(170, 170, 170);
+    margin: 100px auto;
+    padding: 0;
+    width: 300px;
+    max-width: 85%;
+}
+
+/**/
+.panel .popup-header{
+    padding: 2px 16px;
+    background-color: #ffffff;
+    color: #1c1a1a;
+    display: flex;
+}
+
+/*Paramètres du texte de la modal*/
+.panel .popup-header h1{
+    font-size: 12px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+/*Paramètre du bouton de la fenêtre modal*/
+.panel .close-modal{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 10px;
+    padding: 1.5px 20px;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    background: #fff;
+    color: rgb(0, 0, 0);
+}
+
+/*Activation du background lors du passage de la souris*/
+.panel .close-modal:hover{
+    color: #FFF;
+    background: rgb(188, 15, 15);
+}
+
+.panel-header i{
+    border: none;
+    font-size: 2vh;
+    border-radius: 0px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+/*Activation du background lors du passage de la souris*/
+.panel-header i:hover{
+    color: rgb(0, 0, 0);
+}
+
+/*Paramètres du body de la popup*/
+.panel .popup-body{
+    padding: 50px 16px;
+}
+
+/*Paramétre du texte du popup body*/
+.panel .popup-body h1{
+    font-size: 15px;
+    margin-top: 5px;
+    margin-left: 10px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;    
+}
+
+/*--------------------- FENETRE MODAL DONNEES ---------------------*/
+
+/*Paramètres de la fenêtre modal*/
+.modal-container-data{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #1c1a1a;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/*Activer la fenêtre modale lors de l'appui sur le bouton template*/
+.modal-container-data.active{
+    display: flex;
+}
+
+/*Paramétre des panneaux */
+.data{
+    position: relative;
+    top: 25%;
+    background-color: rgb(170, 170, 170);
+    margin: 100px auto;
+    padding: 0;
+    width: 300px;
+    max-width: 85%;
+}
+
+/**/
+.data .popup-header{
+    padding: 2px 16px;
+    background-color: #ffffff;
+    color: #1c1a1a;
+    display: flex;
+}
+
+/*Paramètres du texte de la modal*/
+.data .popup-header h1{
+    font-size: 12px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+/*Paramètre du bouton de la fenêtre modal*/
+.data .close-modal{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 10px;
+    padding: 1.5px 20px;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    background: #fff;
+    color: rgb(0, 0, 0);
+}
+
+/*Activation du background lors du passage de la souris*/
+.data .close-modal:hover{
+    color: #FFF;
+    background: rgb(188, 15, 15);
+}
+
+/*Paramètres du body de la popup*/
+.data .popup-body{
+    padding: 10px 16px;
+    justify-content: center;
+}
+
+.container-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.container-box input{
+    cursor: pointer;
+}
+
+.container-box label{
+    white-space: nowrap;
+}
+
+.popup-body .input_field .btn{
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 0;
+    background: #707070;
+    color: #FFF;
+    cursor: pointer;
+    outline: none;
+}
+
+.popup-body .input_field .btn:hover{
+    background: #11101d;
+    color: #FFF;
+}
